@@ -7,6 +7,7 @@ package com.packetpublishing.tddjava.ch03tictactoe;
  */
 public class TicTacToe {
     private Character[][] board = {{'\0', '\0', '\0'}, {'\0', '\0', '\0'}, {'\0', '\0', '\0'}};
+    private char lastPlayer = '\0';
 
     /**
      * 0 0 0
@@ -20,6 +21,8 @@ public class TicTacToe {
         checkAxis(x);
         checkAxis(y);
         setBox(x, y);
+        //玩了一次以后切换玩家
+        lastPlayer= nextPlayer();
     }
 
     private void setBox(int x, int y) {
@@ -37,4 +40,10 @@ public class TicTacToe {
     }
 
 
+    public char nextPlayer() {
+        if (lastPlayer == 'X') {
+            return 'O';
+        }
+        return 'X';
+    }
 }
